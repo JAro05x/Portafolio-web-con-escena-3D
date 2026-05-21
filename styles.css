@@ -522,3 +522,24 @@ code {
     border: 1px solid var(--neon-purple);
     box-shadow: inset 0 0 50px rgba(0,0,0,0.8), 0 0 30px rgba(168, 85, 247, 0.2);
 }
+
+/* =========================================
+   Sección Diorama (Model Viewer)
+   ========================================= */
+.seccion-diorama {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.seccion-diorama model-viewer {
+    width: 100%;
+    max-width: 800px;
+    height: 500px;
+    background-color: #020204; /* Fondo oscuro para destacar neón */
+    border-radius: 15px;
+    box-shadow: 0 0 25px #7F2BFF; /* Sombra morada neón estilizada */
+    border: 1px solid rgba(127, 43, 255, 0.3); /* Borde sutil para darle presencia */
+    outline: none;
+}

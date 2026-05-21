@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diorama 3D | José Antonio Rosado Osorio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
+</head>
+<body>
+    <div class="diorama-page-container">
+        <a href="index.html" class="volver-btn" style="text-decoration: none; display: inline-block; padding: 10px 20px; border: 1px solid #7F2BFF; border-radius: 8px; color: #fff; margin-bottom: 20px;">← Volver al inicio</a>
+        
+        <div class="diorama-layout" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+            
+            <div style="width: 100%; height: 550px; background-color: #1a1a1e; border-radius: 15px; box-shadow: 0 10px 30px rgba(127, 43, 255, 0.3); overflow: hidden;">
+                <model-viewer 
+                    id="mi-diorama"
+                    src="assets/setup.glb" 
+                    ar
+                    camera-controls 
+                    auto-rotate 
+                    shadow-intensity="1" 
+                    exposure="1.2"
+                    draco-decoder-path="https://www.gstatic.com/draco/versioned/decoders/1.5.7/"
+                    style="width: 100%; height: 100%;">
+                </model-viewer>
+            </div>
+
+            <div class="diorama-info">
+                <h1>Diorama 3D: Setup Cyberpunk</h1>
+                <p>Proyecto interactivo de entorno low-poly desarrollado para la materia de Graficación. Cuenta con texturas optimizadas en WebP mediante compresión Draco e iluminación neón con mapas de emisión.</p>
+                <div class="tags" style="display: flex; gap: 10px; margin-top: 20px;">
+                    <span style="padding: 5px 15px; border: 1px solid #7F2BFF; border-radius: 20px; font-size: 0.8rem;">Blender</span>
+                    <span style="padding: 5px 15px; border: 1px solid #7F2BFF; border-radius: 20px; font-size: 0.8rem;">WebGL</span>
+                    <span style="padding: 5px 15px; border: 1px solid #7F2BFF; border-radius: 20px; font-size: 0.8rem;">Model-Viewer</span>
+                    <span style="padding: 5px 15px; border: 1px solid #7F2BFF; border-radius: 20px; font-size: 0.8rem;">Git</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script para monitorear errores de carga del modelo -->
+    <script>
+        const viewer = document.getElementById('mi-diorama');
+        
+        viewer.addEventListener('error', (event) => {
+            const detail = event.detail || {};
+            const errorMsg = `Tipo: ${detail.type || 'Desconocido'}\nMensaje: ${detail.message || 'No hay detalles'}`;
+            console.error('Error detallado:', detail);
+            alert('Error cargando el modelo 3D:\n' + errorMsg);
+        });
+
+        viewer.addEventListener('progress', (event) => {
+            console.log(`Cargando modelo: ${Math.round(event.detail.totalProgress * 100)}%`);
+        });
+
+        viewer.addEventListener('load', () => {
+            console.log('Modelo cargado exitosamente.');
+        });
+    </script>
+</body>
+</html>
