@@ -682,34 +682,33 @@ input:checked + .slider:before {
 }
 
 /* =========================================
-   Interactive Neon Cursor
+   Interactive Neon Cursor (RGB Electric)
    ========================================= */
 .custom-cursor {
     position: fixed;
     top: 0;
     left: 0;
-    width: 24px;
-    height: 24px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(0,255,255,0.9)" stroke="white" stroke-width="1.5"><polygon points="2,2 20,10 12,12 10,20"/></svg>');
+    width: 28px;
+    height: 28px;
+    /* Red base color, we will hue-rotate it for RGB */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ff0000" stroke="white" stroke-width="1.5"><polygon points="2,2 20,10 12,12 10,20"/></svg>');
     background-size: contain;
     background-repeat: no-repeat;
     pointer-events: none;
     z-index: 9999;
     mix-blend-mode: screen;
-    animation: cursorColorOscillate 3s infinite alternate;
+    animation: cursorRGB 2s linear infinite;
     transition: width 0.3s ease, height 0.3s ease;
 }
 
 .custom-cursor.cursor-hover {
-    width: 32px;
-    height: 32px;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="rgba(127,43,255,0.9)" stroke="white" stroke-width="1.5"><polygon points="2,2 20,10 12,12 10,20"/></svg>');
-    animation: none;
+    width: 36px;
+    height: 36px;
 }
 
-@keyframes cursorColorOscillate {
-    0% { filter: hue-rotate(0deg) drop-shadow(0 0 10px var(--neon-cyan)); }
-    100% { filter: hue-rotate(90deg) drop-shadow(0 0 10px var(--neon-purple)); }
+@keyframes cursorRGB {
+    0% { filter: hue-rotate(0deg) drop-shadow(0 0 10px #ff0000); }
+    100% { filter: hue-rotate(360deg) drop-shadow(0 0 10px #ff0000); }
 }
 
 .cursor-trail {
@@ -718,12 +717,13 @@ input:checked + .slider:before {
     left: 0;
     width: 6px;
     height: 6px;
-    background-color: var(--neon-cyan);
+    background-color: #fff;
+    box-shadow: 0 0 8px #ff0000, 0 0 15px #ff0000;
     border-radius: 50%;
     pointer-events: none;
     z-index: 9998;
     mix-blend-mode: screen;
-    animation: cursorColorOscillate 3s infinite alternate;
+    animation: cursorRGB 2s linear infinite;
     transform: translate(-50%, -50%);
 }
 
@@ -778,3 +778,97 @@ input:checked + .slider:before {
     50% { box-shadow: 0 0 25px rgba(127, 43, 255, 0.8); }
     100% { box-shadow: 0 0 10px rgba(127, 43, 255, 0.4); }
 }
+
+/* =========================================
+   Cyber Diagonal Wipe Transition
+   ========================================= */
+.cyber-wipe {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 10000;
+    pointer-events: none;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.cyber-wipe.active {
+    visibility: visible;
+}
+
+.cyber-wipe .wipe-layer {
+    position: absolute;
+    top: -10vh; left: -50vw;
+    width: 200vw; height: 120vh;
+    transform: skewX(-30deg) translateX(-150%);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.cyber-wipe .wipe-layer:nth-child(1) {
+    background: var(--neon-cyan);
+    transition: transform 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.cyber-wipe .wipe-layer:nth-child(2) {
+    background: var(--neon-purple);
+    transition: transform 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0.1s;
+}
+
+.cyber-wipe .wipe-layer:nth-child(3) {
+    background: var(--bg-main);
+    transition: transform 0.5s cubic-bezier(0.7, 0, 0.3, 1) 0.2s;
+}
+
+.cyber-wipe.active .wipe-layer {
+    transform: skewX(-30deg) translateX(0);
+}
+
+/* =========================================
+   Social / Contact Section
+   ========================================= */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+    padding-bottom: 2rem;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(0, 255, 255, 0.2);
+    border-radius: 8px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.social-btn svg {
+    transition: all 0.3s ease;
+}
+
+.social-btn.github:hover {
+    border-color: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+.social-btn.github:hover svg { fill: #fff; }
+
+.social-btn.instagram:hover {
+    border-color: #E1306C;
+    box-shadow: 0 0 15px rgba(225, 48, 108, 0.4);
+}
+.social-btn.instagram:hover svg { fill: #E1306C; }
+
+.social-btn.discord:hover {
+    border-color: #5865F2;
+    box-shadow: 0 0 15px rgba(88, 101, 242, 0.4);
+}
+.social-btn.discord:hover svg { fill: #5865F2; }

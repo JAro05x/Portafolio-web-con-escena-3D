@@ -8,13 +8,13 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.appendChild(cursor);
 
     // Create trail elements
-    const trailCount = 8;
+    const trailCount = 12; // Increased for better electric effect
     const trails = [];
     for (let i = 0; i < trailCount; i++) {
         const dot = document.createElement('div');
         dot.classList.add('cursor-trail');
         // Vary the animation delay slightly to make them feel organic
-        dot.style.animationDelay = `${-i * 0.1}s`;
+        dot.style.animationDelay = `${-i * 0.15}s`;
         document.body.appendChild(dot);
         trails.push({ x: 0, y: 0, el: dot });
     }
@@ -33,15 +33,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Trail animation loop
     function animateTrail() {
-        let x = mouseX;
-        let y = mouseY;
+        // Offset the trail to start from the middle of the cursor arrow
+        let x = mouseX + 14;
+        let y = mouseY + 14;
         trails.forEach((trail, index) => {
-            const nextX = trail.x + (x - trail.x) * 0.35;
-            const nextY = trail.y + (y - trail.y) * 0.35;
+            const nextX = trail.x + (x - trail.x) * 0.4;
+            const nextY = trail.y + (y - trail.y) * 0.4;
             trail.x = nextX;
             trail.y = nextY;
+            
+            // Electric jitter effect (more erratic for tail)
+            const jitterAmount = index > 0 ? (Math.random() - 0.5) * (index * 1.5) : 0;
+            const finalX = nextX + jitterAmount;
+            const finalY = nextY + (Math.random() - 0.5) * (index * 1.5);
+            
             // Scale down the trail as it gets further behind
-            trail.el.style.transform = `translate(calc(-50% + ${nextX}px), calc(-50% + ${nextY}px)) scale(${1 - index / trailCount})`;
+            trail.el.style.transform = `translate(calc(-50% + ${finalX}px), calc(-50% + ${finalY}px)) scale(${1 - index / trailCount})`;
             x = nextX;
             y = nextY;
         });
@@ -148,6 +155,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     observer.observe(document.body, { childList: true, subtree: true });
+
+    // ==========================================
+    // Page Transition Cyber Wipe
+    // ==========================================
+    const cyberWipe = document.createElement('div');
+    cyberWipe.className = 'cyber-wipe';
+    
+    // Create 3 layers for the wipe
+    for (let i = 0; i < 3; i++) {
+        const layer = document.createElement('div');
+        layer.className = 'wipe-layer';
+        cyberWipe.appendChild(layer);
+    }
+    document.body.appendChild(cyberWipe);
+
+    const linkCards = document.querySelectorAll('.nav-card.link-card');
+    linkCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            e.preventDefault();
+            const href = card.getAttribute('href');
+            
+            // Trigger wipe animation
+            cyberWipe.classList.add('active');
+            
+            // Navigate after transition finishes
+            setTimeout(() => {
+                window.location.href = href;
+            }, 800);
+        });
+    });
 
     // ==========================================
     // Audio Player Logic
