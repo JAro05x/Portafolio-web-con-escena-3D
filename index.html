@@ -14,196 +14,109 @@
 
 <body>
 
-    <!-- ==============================================
-         1. SECCIÓN INICIO (Home)
-         ============================================== -->
     <section id="home-section">
-        <header>
-            <h1 class="header-title">José Antonio Rosado Osorio</h1>
-            <p class="header-subtitle text-accent">Desarrollador Frontend & Experiencias Interactivas</p>
+
+        <!-- Header Personalizado -->
+        <header class="header-layout">
+            <div class="profile-picture-container">
+                <img src="assets/images/profile-picture.jpg" alt="José Antonio" class="profile-img">
+            </div>
+            <div class="header-text-container">
+                <h1 class="header-title">José Antonio Rosado Osorio</h1>
+                <p class="header-subtitle text-accent">Desarrollador Frontend & Experiencias Interactivas</p>
+            </div>
+
+            <div class="academic-glass-panel">
+                <p style="margin-bottom: 0.5rem;">Alumno de <strong>5to Semestre</strong></p>
+                <p style="margin-bottom: 0.5rem;">Ingeniería en Sistemas Computacionales</p>
+                <p style="margin-bottom: 0.5rem;">Instituto Tecnológico de Mérida | Grupo <strong>5SA</strong></p>
+                <p style="margin-bottom: 0;">Materia: <strong>Graficación</strong></p>
+            </div>
         </header>
 
         <article id="sobre-mi" class="about-card">
             <h2>Sobre Mí</h2>
             <p>Me especializo en crear aplicaciones web modernas, limpias y altamente responsivas. Mi enfoque principal
-                es integrar tecnologías web estándar con experiencias interactivas avanzadas (Flutter, Three.js, Rive)
-                para crear productos digitales que destaquen por su fluidez y estética.</p>
+                es integrar tecnologías web estándar con experiencias interactivas avanzadas para crear productos
+                digitales que destaquen por su fluidez y estética.</p>
+
+            <!-- Sección Habilidades: Nódulos de Red Cyberpunk -->
+            <div class="skills-network">
+                <h3 class="text-accent" style="margin-bottom: 1.5rem; display: block; text-align: center;">Nódulos de
+                    Habilidad</h3>
+                <div class="nodules-container">
+                    <div class="skill-nodule" style="--neon-glow: var(--neon-purple);">
+                        <span class="nodule-icon">3D</span>
+                        <span class="nodule-name">Blender 3D</span>
+                        <div class="skill-tooltip">Modelado Low-Poly & Mapas de Emisión</div>
+                    </div>
+                    <div class="skill-nodule" style="--neon-glow: var(--neon-cyan);">
+                        <span class="nodule-icon">FL</span>
+                        <span class="nodule-name">Flutter/Dart</span>
+                        <div class="skill-tooltip">Arquitectura Reactiva & Animaciones Vectoriales</div>
+                    </div>
+                    <div class="skill-nodule" style="--neon-glow: var(--neon-pink);">
+                        <span class="nodule-icon">GL</span>
+                        <span class="nodule-name">WebGL</span>
+                        <div class="skill-tooltip">Renderizado 3D en Tiempo Real</div>
+                    </div>
+                    <div class="skill-nodule" style="--neon-glow: var(--neon-green);">
+                        <span class="nodule-icon">GIT</span>
+                        <span class="nodule-name">Git/GitHub</span>
+                        <div class="skill-tooltip">Control de Versiones & Colaboración</div>
+                    </div>
+                </div>
+            </div>
         </article>
 
         <!-- Navegación de Proyectos -->
         <article id="navegacion-proyectos">
             <h2 class="section-divider">Explora Mis Proyectos</h2>
             <div class="menu-grid">
-                <div class="nav-card" id="btn-rive">
-                    <h3>Flutter + Rive</h3>
-                    <p>App de login interactivo en Flutter Web con el oso Teddy animado reaccionando a los estados del
-                        formulario.</p>
-                </div>
 
-                <a href="diorama.html" style="text-decoration: none; color: inherit; display: block;">
-                    <div class="nav-card">
-                        <h3>Setup 3D WebGL</h3>
-                        <p>Mi setup de trabajo modelado en Blender e integrado interactivamente usando la librería web
-                            Three.js.</p>
-                    </div>
+                <a href="login-rive.html" class="nav-card link-card">
+                    <h3>Flutter + Rive</h3>
+                    <p>Flutter es una herramienta extremadamente potente para la web moderna. En este proyecto, combiné
+                        su rendimiento con animaciones vectoriales dinámicas en Rive, creando una interfaz de login
+                        interactiva con un oso Teddy que reacciona a los estados del formulario.</p>
                 </a>
+
+                <a href="diorama.html" class="nav-card link-card">
+                    <h3>Setup 3D WebGL</h3>
+                    <p>Blender es la suite de creación 3D de código abierto líder, utilizada para modelado, renderizado
+                        y animaciones complejas. En este proyecto se utilizó para esculpir un entorno low-poly
+                        optimizado con mapas de emisión neón.</p>
+                </a>
+
             </div>
         </article>
-
-
 
         <footer>
             <p>&copy; 2026 José Antonio Rosado Osorio. Todos los derechos reservados.</p>
         </footer>
     </section>
 
-    <!-- ==============================================
-         2. SECCIÓN FLUTTER + RIVE (Documentación Técnica)
-         ============================================== -->
-    <section id="rive-section" class="hidden">
-        <button class="btn-back" id="btn-back-rive">
-            &larr; Regresar al Inicio
-        </button>
+    <!-- Audio Player -->
+    <audio id="bg-audio" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+    </audio>
+    <button id="audio-toggle" class="audio-btn" aria-label="Play/Pause Music">
+        🎵
+    </button>
 
-        <div class="project-header">
-            <h2 class="text-accent">Flutter Login Animation with Rive</h2>
-            <p class="project-subtitle">Application developed in Flutter (Dart) that implements an animated login screen
-                using Rive to integrate interactive animations and enhance the user experience.</p>
+    <!-- Custom Script -->
+    <script src="script.js"></script>
 
-            <div class="tech-stack-tags">
-                <span class="tag">Flutter</span>
-                <span class="tag">Dart</span>
-                <span class="tag">Rive</span>
-                <span class="tag">Material Design</span>
-            </div>
-
-            <!-- Link oficial de GitHub reemplazado -->
-            <a href="https://github.com/JAro05x/login_with_rive_animation_5sa_26_1.git" target="_blank"
-                rel="noopener noreferrer" class="btn-github">Ver Código en GitHub</a>
-        </div>
-
-        <!-- Cuadrícula de Documentación Técnica -->
-        <div class="documentation-grid">
-            <div class="doc-card">
-                <h3 class="doc-title">📱 Project Description</h3>
-                <p>This project consists of a modern and interactive login interface where a <strong>Rive</strong>
-                    animation dynamically responds to user actions.</p>
-                <p>The animation changes state depending on user interaction with the text fields (for example: when the
-                    user types the email, enters the password, or triggers validation).</p>
-                <p>The main purpose of this project was to understand how to integrate advanced animations in Flutter
-                    and connect them with application logic.</p>
-            </div>
-
-            <div class="doc-card">
-                <h3 class="doc-title">🎯 Project Objectives</h3>
-                <ul class="doc-list">
-                    <li>Integrate interactive animations with Rive in Flutter.</li>
-                    <li>Connect application logic with visual states.</li>
-                    <li>Design an attractive and modern interface.</li>
-                    <li>Practice Flutter project structure and organization.</li>
-                </ul>
-            </div>
-
-            <div class="doc-card full-width">
-                <h3 class="doc-title">🎨 Architecture & Rive Implementation</h3>
-                <p>The animation is loaded directly from local assets. A <code>StateMachineController</code> is used to
-                    manipulate animation states depending on user interaction.</p>
-                <div class="code-block">
-                    <pre><code>StateMachineController.fromArtboard(
-  artboard,
-  'State Machine Name',
-);</code></pre>
-                </div>
-                <p>This architecture allows:</p>
-                <ul class="doc-list">
-                    <li>Triggering animations when the user interacts with the fields.</li>
-                    <li>Changing boolean states inside the state machine.</li>
-                    <li>Triggering animation events and controlling visual logic directly from Dart code.</li>
-                </ul>
-            </div>
-
-            <div class="doc-card">
-                <h3 class="doc-title">🧠 Key Learnings</h3>
-                <ul class="doc-list">
-                    <li>How to import and configure <code>.riv</code> files.</li>
-                    <li>How to work with <code>StateMachineController</code>.</li>
-                    <li>How to connect Rive inputs and triggers with Flutter events.</li>
-                    <li>Asset and dependency management in Flutter.</li>
-                </ul>
-            </div>
-
-            <div class="doc-card">
-                <h3 class="doc-title">🔮 Future Improvements</h3>
-                <ul class="doc-list">
-                    <li>Implement real validation connected to a backend.</li>
-                    <li>Add navigation to a main screen after login.</li>
-                    <li>Make the interface responsive for different screen sizes.</li>
-                    <li>Optimize architecture using patterns such as Provider or Bloc.</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Video Principal del Proyecto -->
-        <div class="portfolio-video-container">
-            <h3>🎥 Project Demo</h3>
-            <div class="video-wrapper">
-                <video class="portfolio-video" controls muted loop poster="assets/images/Principal.png">
-                    <!-- Rutas multimedia locales respetadas -->
-                    <source src="assets/images/Gif.mp4" type="video/mp4">
-                    Tu navegador no soporta el reproductor de video HTML5.
-                </video>
-            </div>
-        </div>
-
-        <!-- Galería de Capturas -->
-        <div class="screenshots-container">
-            <h3>🖼️ Screenshots</h3>
-            <div class="screenshots-grid">
-                <!-- Rutas multimedia locales respetadas -->
-                <img src="assets/images/Principal.png" alt="Pantalla Principal del Login">
-                <img src="assets/images/Correo.png" alt="Interacción de Correo">
-                <img src="assets/images/Password.png" alt="Interacción de Password">
-            </div>
-        </div>
-
-        <div class="project-footer">
-            <p><strong>Course:</strong> Graficación | <strong>Instructor:</strong> Rodrigo Fidel Gaxiola Sosa</p>
-            <p><strong>Student:</strong> José Antonio Rosado Osorio</p>
-            <p class="credits">Rive Animation Credits: <a
-                    href="https://rive.app/marketplace/3645-7621-remix-of-login-machine/" target="_blank"
-                    class="text-accent">Login Machine Remix</a></p>
-        </div>
-    </section>
-
-    <!-- ==============================================
-         3. SECCIÓN BLENDER / THREE.JS
-         ============================================== -->
-    <section id="blender-section" class="hidden">
-        <button class="btn-back" id="btn-back-blender">
-            &larr; Regresar al Inicio
-        </button>
-
-        <div class="project-header">
-            <h2 class="text-accent">Setup 3D con Blender y Three.js</h2>
-            <p>Modelo 3D exportado desde Blender (GLTF/GLB) y renderizado en tiempo real usando Three.js, con controles
-                de órbita e iluminación dinámica.</p>
-            <button id="toggle-light-btn" class="btn-github" style="margin-top: 1rem;">Alternar Iluminación</button>
-        </div>
-
-        <div id="canvas-container" class="canvas-3d-wrapper"></div>
-    </section>
-
-    <!-- Import map para Three.js -->
-    <script type="importmap">
-      {
-        "imports": {
-          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
-        }
-      }
-    </script>
-
-    <script type="module" src="script.js"></script>
+    <!-- Topographic Distortion Filter -->
+    <svg style="width: 0; height: 0; position: absolute;" aria-hidden="true">
+        <filter id="topo-distort" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.008" numOctaves="4" result="noise" />
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1.5 0" in="noise"
+                result="enhancedNoise" />
+            <feDisplacementMap in="SourceGraphic" in2="enhancedNoise" scale="120" xChannelSelector="R"
+                yChannelSelector="G" />
+        </filter>
+    </svg>
 </body>
 
 </html>

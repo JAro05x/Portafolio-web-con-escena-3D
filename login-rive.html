@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flutter & Rive App | José Antonio Rosado Osorio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <a href="index.html" class="btn-github" style="margin-bottom: 2rem;">← Back to Home</a>
+        
+        <div class="about-card" style="margin-bottom: 0; padding: 3rem;">
+            <div class="markdown-body">
+                <h1>🎯 Flutter Login Animation with Rive</h1>
+                <p>Application developed in <strong>Flutter (Dart)</strong> that implements an animated login screen using <strong>Rive</strong> to integrate interactive animations and enhance the user experience.</p>
+                
+                <hr>
+                
+                <h2>🧬 What is Flutter and how does it work on the Web?</h2>
+                <p>Flutter is a reactive framework based on Dart. For the web, it compiles the code to WebAssembly and uses <strong>CanvasKit (WebGL)</strong> to render every pixel of the interface on a <code>&lt;canvas&gt;</code> element, ensuring 60 FPS and an experience identical to a native application. By integrating with the <strong>Rive Runtime</strong>, it allows developers to manipulate dynamic vector animations controlled by State Machines, which instantly respond to user events without sacrificing performance.</p>
+
+                <hr>
+
+                <h2>📱 Project Description</h2>
+                <p>This project consists of a modern and interactive login interface where a <strong>Rive</strong> animation dynamically responds to user actions.</p>
+                <p>The animation changes state depending on user interaction with the text fields (for example: when the user types the email, enters the password, or triggers validation).</p>
+                <p>The main purpose of this project was to understand how to integrate advanced animations in Flutter and connect them with application logic.</p>
+
+                <hr>
+
+                <h2>🎥 Project Demo</h2>
+                <img src="rive-app/gif_proyecto.gif" alt="Demo GIF">
+
+                <hr>
+
+                <h2>🖼️ Screenshots</h2>
+                <img src="rive-app/Principal.png" alt="Main Screen">
+                <img src="rive-app/Correo.png" alt="Email Interaction">
+                <img src="rive-app/Password.png" alt="Password Interaction">
+
+                <hr>
+
+                <h2>🛠️ Technologies Used</h2>
+                <ul>
+                    <li>💙 Flutter</li>
+                    <li>🎯 Dart</li>
+                    <li>🎨 Rive</li>
+                    <li>📱 Material Design</li>
+                </ul>
+
+                <hr>
+
+                <h2>📦 Main Dependencies</h2>
+<pre><code>dependencies:
+  flutter:
+    sdk: flutter
+  rive: ^0.x.x</code></pre>
+
+                <hr>
+
+                <h2>📁 Project Structure</h2>
+<pre><code>📂 login_with_rive_animation_5sa_26_1/
+ ├── lib/
+ │   ├── main.dart
+ │   ├── login_screen.dart
+ │
+ ├── assets/
+ │   ├── animations/
+ │       ├── animation_file.riv
+ │
+ ├── pubspec.yaml
+ ├── README.md</code></pre>
+
+                <hr>
+
+                <h2>🚀 Installation and Execution</h2>
+                <h3>1️⃣ Clone the repository</h3>
+<pre><code>git clone https://github.com/JAro05x/login_with_rive_animation_5sa_26_1.git</code></pre>
+                <h3>2️⃣ Enter the project directory</h3>
+<pre><code>cd login_with_rive_animation_5sa_26_1</code></pre>
+                <h3>3️⃣ Install dependencies</h3>
+<pre><code>flutter pub get</code></pre>
+                <h3>4️⃣ Run the application</h3>
+<pre><code>flutter run</code></pre>
+
+                <hr>
+
+                <h2>🎨 Rive Implementation</h2>
+                <p>The animation is loaded from assets using:</p>
+<pre><code>RiveAnimation.asset(
+  'assets/animations/archivo_animacion.riv',
+  fit: BoxFit.cover,
+)</code></pre>
+                <p>A <code>StateMachineController</code> is used to manipulate animation states depending on user interaction.</p>
+                <p>General controller example:</p>
+<pre><code>StateMachineController.fromArtboard(
+  artboard,
+  'State Machine Name',
+);</code></pre>
+                <h3>This allows:</h3>
+                <ul>
+                    <li>Triggering animations when the user interacts with the fields.</li>
+                    <li>Changing boolean states inside the state machine.</li>
+                    <li>Triggering animation events.</li>
+                    <li>Controlling visual logic directly from Dart code.</li>
+                </ul>
+
+                <hr>
+
+                <h2>🧠 General Functionality</h2>
+                <ul>
+                    <li>The application starts from <code>main.dart</code>.</li>
+                    <li>The login screen is loaded.</li>
+                    <li>The Rive animation is initialized.</li>
+                    <li>The state machine controller is connected.</li>
+                    <li>The animation dynamically responds to user interaction.</li>
+                </ul>
+
+                <hr>
+
+                <h2>🎯 Project Objectives</h2>
+                <ul>
+                    <li>Integrate interactive animations with Rive in Flutter.</li>
+                    <li>Connect application logic with visual states.</li>
+                    <li>Design an attractive and modern interface.</li>
+                    <li>Practice Flutter project structure and organization.</li>
+                </ul>
+
+                <hr>
+
+                <h2>🧠 Key Learnings</h2>
+                <ul>
+                    <li>How to import and configure <code>.riv</code> files.</li>
+                    <li>How to work with <code>StateMachineController</code>.</li>
+                    <li>How to connect Rive inputs and triggers with Flutter events.</li>
+                    <li>Project file organization in Flutter.</li>
+                    <li>Asset and dependency management.</li>
+                </ul>
+
+                <hr>
+
+                <h2>🔮 Future Improvements</h2>
+                <ul>
+                    <li>Implement real validation connected to a backend.</li>
+                    <li>Add navigation to a main screen after login.</li>
+                    <li>Make the interface responsive for different screen sizes.</li>
+                    <li>Add additional animations for error or success states.</li>
+                    <li>Optimize architecture using patterns such as Provider or Bloc.</li>
+                </ul>
+
+                <hr>
+
+                <h2>📚 Project Information</h2>
+                <ul>
+                    <li><strong>Course:</strong> Computer Graphics</li>
+                    <li><strong>Instructor:</strong> Rodrigo Fidel Gaxiola Sosa</li>
+                    <li><strong>Rive Animation Credits:</strong> <a href="https://rive.app/marketplace/3645-7621-remix-of-login-machine/" target="_blank">https://rive.app/marketplace/3645-7621-remix-of-login-machine/</a></li>
+                    <li><strong>Student:</strong> José Antonio Rosado Osorio</li>
+                </ul>
+
+            </div>
+
+            <div class="card-actions" style="margin-top: 3rem; display: flex; justify-content: center;">
+                <a href="https://github.com/JAro05x/login_with_rive_animation_5sa_26_1.git" target="_blank" class="btn-github" style="text-align: center; font-size: 1.2rem; padding: 1.2rem 3rem; border-width: 2px; box-shadow: 0 0 25px rgba(127, 43, 255, 0.5); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; border-radius: 8px;">📂 Explore Source Code on GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Player -->
+    <audio id="bg-audio" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+    </audio>
+    <button id="audio-toggle" class="audio-btn" aria-label="Play/Pause Music">
+        🎵
+    </button>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+
+    <!-- Topographic Distortion Filter -->
+    <svg style="width: 0; height: 0; position: absolute;" aria-hidden="true">
+        <filter id="topo-distort" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.008" numOctaves="4" result="noise" />
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1.5 0" in="noise" result="enhancedNoise" />
+            <feDisplacementMap in="SourceGraphic" in2="enhancedNoise" scale="120" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+    </svg>
+</body>
+</html>

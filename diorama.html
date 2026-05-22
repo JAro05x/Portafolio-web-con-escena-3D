@@ -8,56 +8,156 @@
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
 <body>
-    <div class="diorama-page-container">
-        <a href="index.html" class="volver-btn" style="text-decoration: none; display: inline-block; padding: 10px 20px; border: 1px solid #7F2BFF; border-radius: 8px; color: #fff; margin-bottom: 20px;">← Volver al inicio</a>
+    <div style="max-width: 1200px; margin: 0 auto;">
+        <a href="index.html" class="btn-github" style="margin-bottom: 2rem;">← Back to Home</a>
         
-        <div class="diorama-layout" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+        <div style="display: flex; flex-direction: column; gap: 3rem; align-items: stretch;">
             
-            <div style="width: 100%; height: 550px; background-color: #1a1a1e; border-radius: 15px; box-shadow: 0 10px 30px rgba(127, 43, 255, 0.3); overflow: hidden;">
-                <model-viewer 
-                    id="mi-diorama"
-                    src="assets/setup.glb" 
-                    ar
-                    camera-controls 
-                    auto-rotate 
-                    shadow-intensity="1" 
-                    exposure="1.2"
-                    draco-decoder-path="https://www.gstatic.com/draco/versioned/decoders/1.5.7/"
-                    style="width: 100%; height: 100%;">
-                </model-viewer>
-            </div>
+            <div style="display: flex; flex-direction: column; gap: 3rem;">
+                <!-- Viewer -->
+                <div style="width: 100%; height: 650px; background-color: rgba(10, 11, 30, 0.8); border: 1px solid var(--neon-cyan); border-radius: var(--border-radius); box-shadow: 0 0 30px rgba(0, 255, 255, 0.2); overflow: hidden; position: relative;">
+                    
+                    <!-- Controles Neón Flotantes sobre el Visor -->
+                    <div class="neon-switch-container" style="position: absolute; top: 20px; right: 20px; z-index: 10; background: rgba(10, 11, 30, 0.7); padding: 0.5rem 1rem; border-radius: 8px; border: 1px solid var(--neon-purple); backdrop-filter: blur(5px);">
+                        <span class="neon-switch-label" style="font-size: 0.8rem;">Environment Lights</span>
+                        <label class="neon-switch" style="transform: scale(0.8); margin-bottom: 0;">
+                            <input type="checkbox" id="toggle-light" checked>
+                            <span class="slider"></span>
+                        </label>
+                    </div>
 
-            <div class="diorama-info">
-                <h1>Diorama 3D: Setup Cyberpunk</h1>
-                <p>Proyecto interactivo de entorno low-poly desarrollado para la materia de Graficación. Cuenta con texturas optimizadas en WebP mediante compresión Draco e iluminación neón con mapas de emisión.</p>
-                <div class="tags" style="display: flex; gap: 10px; margin-top: 20px;">
-                    <span style="padding: 5px 15px; border: 1px solid #7F2BFF; border-radius: 20px; font-size: 0.8rem;">Blender</span>
-                    <span style="padding: 5px 15px; border: 1px solid #7F2BFF; border-radius: 20px; font-size: 0.8rem;">WebGL</span>
-                    <span style="padding: 5px 15px; border: 1px solid #7F2BFF; border-radius: 20px; font-size: 0.8rem;">Model-Viewer</span>
-                    <span style="padding: 5px 15px; border: 1px solid #7F2BFF; border-radius: 20px; font-size: 0.8rem;">Git</span>
+                    <model-viewer 
+                        id="mi-diorama"
+                        src="assets/setup.glb" 
+                        ar
+                        camera-controls 
+                        auto-rotate 
+                        shadow-intensity="1" 
+                        exposure="1.2"
+                        draco-decoder-path="https://www.gstatic.com/draco/versioned/decoders/1.5.7/"
+                        style="width: 100%; height: 100%; --poster-color: transparent;">
+                    </model-viewer>
+                </div>
+
+                <!-- Información y Controles (README.md Convertido) -->
+                <div class="about-card" style="margin-bottom: 0; padding: 3rem;">
+                    <div class="markdown-body">
+                        <h1>🎮 Web Portfolio with 3D Interactive Scene (Gamer Diorama)</h1>
+                        
+                        <h2>📌 Academic Information</h2>
+                        <ul>
+                            <li><strong>Institution:</strong> Instituto Tecnológico de Mérida (TecNM Campus Mérida)</li>
+                            <li><strong>Major:</strong> Computer Systems Engineering</li>
+                            <li><strong>Semester:</strong> 5th Semester</li>
+                            <li><strong>Group:</strong> 5SA</li>
+                            <li><strong>Course:</strong> Computer Graphics</li>
+                            <li><strong>Instructor:</strong> Mtr. Rodrigo Fidel Gaxiola Sosa</li>
+                            <li><strong>Student:</strong> José Antonio Rosado Osorio</li>
+                        </ul>
+
+                        <hr>
+
+                        <h2>🌌 Project Overview</h2>
+                        <p>This project consists of the design, modeling, optimization, and web integration of an <strong>Interactive 3D Diorama</strong> with a high-saturation <em>Cyberpunk / Neon Vibrant</em> aesthetic. The scenario represents a complete <em>Gamer Setup</em>, optimized using <em>Low-Poly</em> modeling techniques to ensure smooth data transfer rates and optimal performance in web environments via Google's <code>&lt;model-viewer&gt;</code> component.</p>
+
+                        <hr>
+
+                        <h2>🛠️ Technical Specifications & Modeling</h2>
+
+                        <h3>🔹 Intellectual Property Assets (Modelated From Scratch)</h3>
+                        <p>Designed, extruded, and structured natively using advanced geometric transformations and modifiers (such as <em>Mirror</em> and <em>Subdivision</em>) in <strong>Blender</strong>:</p>
+                        <ul>
+                            <li><strong>Room Architecture:</strong> Walls, floor, windows, and overall structural layout of the bedroom.</li>
+                            <li><strong>Gamer Desk:</strong> Main support structure and base layout for peripherals.</li>
+                            <li><strong>Workstation (PC Case):</strong> Custom-designed desktop tower with internal hardware suggestions.</li>
+                            <li><strong>Screens & Peripherals:</strong> High-refresh-rate monitor and mechanical keyboard.</li>
+                            <li><strong>Secondary Furniture:</strong> Shelves, decorative supports, and environment details tailored to a personal gaming setup style.</li>
+                        </ul>
+
+                        <h3>🔹 Imported Assets & Optimization (Credits)</h3>
+                        <p>External resources obtained from the 3D community, integrated to enrich the diorama's composition, optimized in polygon count, and re-textured with environment PBR materials:</p>
+                        <ul>
+                            <li><strong>Basketball:</strong> Original asset by <strong>Ika3D</strong> (Sketchfab).</li>
+                            <li><strong>Complete Bed:</strong> Original asset by <strong>hectopod</strong> (Sketchfab).</li>
+                            <li><strong>Organic Planter:</strong> Original asset by <strong>Giora</strong> (Sketchfab).</li>
+                            <li><strong>Gaming Mouse:</strong> Original asset by <strong>rubykamen</strong> (Sketchfab).</li>
+                            <li><strong>Leather Puff:</strong> Original asset by <strong>Hey Arnold</strong> (Sketchfab).</li>
+                        </ul>
+
+                        <h3>💡 Lighting & Materials (Neon Glow Effect)</h3>
+                        <ul>
+                            <li><strong>Emission Maps:</strong> Material nodes configured with emission properties in Neon Purple (<code>#7F2BFF</code>) and Bright Cyan (<code>#00FFFF</code>) to simulate ambient LED strips and screen glows.</li>
+                            <li><strong>Transmission Optimization:</strong> The complete scene was exported in the industry-standard <strong>GLB</strong> format. The final file size was compressed to <strong>39 MB</strong> using <strong>Draco compression</strong> to guarantee near-instant web loading times.</li>
+                        </ul>
+
+                        <hr>
+
+                        <h2>🌐 Web Integration & Interactiveness</h2>
+                        <p>The diorama is deployed within a responsive web interface (<code>diorama.html</code>) powered by Google's open-source <strong>Model-Viewer</strong> library.</p>
+
+                        <h3>⚙️ Implemented Interactive Features:</h3>
+                        <ol>
+                            <li><strong>Orbit Control (Camera Controls):</strong> Allows users to rotate, zoom, and pan the camera 360 degrees via touch gestures or mouse inputs.</li>
+                            <li><strong>Environment Light Switch (JavaScript):</strong> A dynamic JS script that manipulates the <code>exposure</code> attribute of the 3D viewport to toggle between production daylight (<code>1.2</code>) and an immersive neon night atmosphere (<code>0.3</code>), simulating turning off the bedroom lights.</li>
+                        </ol>
+
+                        <hr>
+
+                        <h2>🚀 Local Deployment & Installation</h2>
+                        <ol>
+                            <li>Clone this repository to your local machine:
+<pre><code>git clone https://github.com/JAro05x/Portafolio-web-con-escena-3D.git</code></pre>
+                            </li>
+                        </ol>
+
+                    </div>
+                    
+                    <div class="card-actions" style="margin-top: 3rem; display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                        <a href="#mi-diorama" class="btn-run" style="text-align: center;">🌐 Test Full Scene</a>
+                        <a href="https://github.com/JAro05x/Portafolio-web-con-escena-3D.git" target="_blank" class="btn-github" style="text-align: center;">📂 GitHub Repository</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Script para monitorear errores de carga del modelo -->
+    <!-- Script para Controles -->
     <script>
         const viewer = document.getElementById('mi-diorama');
-        
+        const lightSwitch = document.getElementById('toggle-light');
+
+        // Toggle exposure to simulate light switch
+        lightSwitch.addEventListener('change', (e) => {
+            if(e.target.checked) {
+                viewer.setAttribute('exposure', '1.2'); // Luces encendidas
+            } else {
+                viewer.setAttribute('exposure', '0.1'); // Luces apagadas (neón brilla)
+            }
+        });
+
         viewer.addEventListener('error', (event) => {
-            const detail = event.detail || {};
-            const errorMsg = `Tipo: ${detail.type || 'Desconocido'}\nMensaje: ${detail.message || 'No hay detalles'}`;
-            console.error('Error detallado:', detail);
-            alert('Error cargando el modelo 3D:\n' + errorMsg);
-        });
-
-        viewer.addEventListener('progress', (event) => {
-            console.log(`Cargando modelo: ${Math.round(event.detail.totalProgress * 100)}%`);
-        });
-
-        viewer.addEventListener('load', () => {
-            console.log('Modelo cargado exitosamente.');
+            console.error('Error cargando el modelo 3D:', event.detail);
         });
     </script>
+
+    <!-- Audio Player -->
+    <audio id="bg-audio" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg">
+    </audio>
+    <button id="audio-toggle" class="audio-btn" aria-label="Play/Pause Music">
+        🎵
+    </button>
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+
+    <!-- Topographic Distortion Filter -->
+    <svg style="width: 0; height: 0; position: absolute;" aria-hidden="true">
+        <filter id="topo-distort" x="-20%" y="-20%" width="140%" height="140%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.008" numOctaves="4" result="noise" />
+            <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1.5 0" in="noise" result="enhancedNoise" />
+            <feDisplacementMap in="SourceGraphic" in2="enhancedNoise" scale="120" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+    </svg>
 </body>
 </html>

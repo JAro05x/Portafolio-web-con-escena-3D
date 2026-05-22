@@ -1,98 +1,175 @@
 // ==========================================
-// Lógica Completa de SPA (Single Page Application) - Con Debugging
+// Custom Interactive Neon Cursor
 // ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    // Create cursor element
+    const cursor = document.createElement('div');
+    cursor.classList.add('custom-cursor');
+    document.body.appendChild(cursor);
 
-document.addEventListener("DOMContentLoaded", () => {
-    // Confirmación inicial de carga
-    console.log('DOM Cargado y script enlazado correctamente');
-
-    // 1. Obtener contenedores principales
-    const homeSection = document.getElementById("home-section");
-    const riveSection = document.getElementById("rive-section");
-    const blenderSection = document.getElementById("blender-section");
-
-    // --- VALIDACIONES DE CONTENEDORES ---
-    if (!homeSection) console.error("No se encontró el contenedor con ID: home-section");
-    if (!riveSection) console.error("No se encontró el contenedor con ID: rive-section");
-    if (!blenderSection) console.error("No se encontró el contenedor con ID: blender-section");
-
-    // 2. Obtener botones del menú
-    const btnRive = document.getElementById("btn-rive");
-    const btnBlender = document.getElementById("btn-blender");
-    
-    // --- VALIDACIONES DE BOTONES DEL MENÚ ---
-    if (!btnRive) console.error("No se encontró el botón con ID: btn-rive");
-    if (!btnBlender) console.error("No se encontró el botón con ID: btn-blender");
-
-    // 3. Obtener botones de "Regresar"
-    const btnBackRive = document.getElementById("btn-back-rive");
-    const btnBackBlender = document.getElementById("btn-back-blender");
-
-    // --- VALIDACIONES DE BOTONES DE REGRESO ---
-    if (!btnBackRive) console.error("No se encontró el botón con ID: btn-back-rive");
-    if (!btnBackBlender) console.error("No se encontró el botón con ID: btn-back-blender");
-
-    /**
-     * Función principal que restaura la vista al Inicio
-     * Oculta los proyectos usando la clase .hidden
-     */
-    function showHome() {
-        if (homeSection) homeSection.classList.remove("hidden");
-        if (riveSection) riveSection.classList.add("hidden");
-        if (blenderSection) blenderSection.classList.add("hidden");
-        
-        // Regresa la vista hacia arriba suavemente
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Create trail elements
+    const trailCount = 8;
+    const trails = [];
+    for (let i = 0; i < trailCount; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('cursor-trail');
+        // Vary the animation delay slightly to make them feel organic
+        dot.style.animationDelay = `${-i * 0.1}s`;
+        document.body.appendChild(dot);
+        trails.push({ x: 0, y: 0, el: dot });
     }
 
-    // Inicializar estado: Mostrar solo Home al cargar
-    showHome();
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+
+    // Track mouse movement
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        // Tip of the cursor aligns with mouse coordinate (no transform offset)
+        cursor.style.left = mouseX + 'px';
+        cursor.style.top = mouseY + 'px';
+    });
+
+    // Trail animation loop
+    function animateTrail() {
+        let x = mouseX;
+        let y = mouseY;
+        trails.forEach((trail, index) => {
+            const nextX = trail.x + (x - trail.x) * 0.35;
+            const nextY = trail.y + (y - trail.y) * 0.35;
+            trail.x = nextX;
+            trail.y = nextY;
+            // Scale down the trail as it gets further behind
+            trail.el.style.transform = `translate(calc(-50% + ${nextX}px), calc(-50% + ${nextY}px)) scale(${1 - index / trailCount})`;
+            x = nextX;
+            y = nextY;
+        });
+        requestAnimationFrame(animateTrail);
+    }
+    animateTrail();
 
     // ==========================================
-    // Controladores de Eventos (Event Listeners)
+    // Visual Touches (Scanlines & Particles)
     // ==========================================
-    
-    // NAVEGACIÓN HACIA: FLUTTER + RIVE
-    if (btnRive) {
-        btnRive.addEventListener("click", () => {
-            console.log('Clic detectado en Flutter'); // Rastro de depuración
-            if (homeSection) homeSection.classList.add("hidden");
-            if (riveSection) riveSection.classList.remove("hidden");
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+    const scanlines = document.createElement('div');
+    scanlines.classList.add('scanlines');
+    document.body.appendChild(scanlines);
+
+    // Subtle Neon Particles Canvas
+    const canvas = document.createElement('canvas');
+    canvas.id = 'bg-particles';
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100vw';
+    canvas.style.height = '100vh';
+    canvas.style.zIndex = '-1';
+    canvas.style.pointerEvents = 'none';
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    let width, height;
+    let particles = [];
+
+    function resize() {
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width;
+        canvas.height = height;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Initialize particles
+    for (let i = 0; i < 40; i++) {
+        particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4 - 0.2, // Float upwards slightly
+            size: Math.random() * 1.5 + 0.5,
+            color: Math.random() > 0.5 ? '#00FFFF' : '#7F2BFF'
         });
     }
 
-    // NAVEGACIÓN HACIA: BLENDER (SETUP 3D)
-    if (btnBlender) {
-        btnBlender.addEventListener("click", () => {
-            console.log('Clic detectado en Blender'); // Rastro de depuración
-            if (homeSection) homeSection.classList.add("hidden");
-            if (blenderSection) blenderSection.classList.remove("hidden");
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+    function animateParticles() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+            p.x += p.vx;
+            p.y += p.vy;
+            // Wrap around
+            if (p.x < 0) p.x = width;
+            if (p.x > width) p.x = 0;
+            if (p.y < 0) p.y = height;
+            if (p.y > height) p.y = 0;
+            
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.globalAlpha = 0.5; // subtle glow
+            ctx.fill();
         });
+        requestAnimationFrame(animateParticles);
     }
+    animateParticles();
 
-    // BOTONES DE REGRESO
-    if (btnBackRive) {
-        btnBackRive.addEventListener("click", () => {
-            console.log('Clic detectado en Regresar (desde Flutter)');
-            showHome();
+    // Add hover effect to interactive elements
+    const interactiveSelectors = 'a, button, input, label, .nav-card, .skill-nodule, .neon-switch-container';
+    const interactiveElements = document.querySelectorAll(interactiveSelectors);
+
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cursor.classList.add('cursor-hover');
         });
-    }
+        el.addEventListener('mouseleave', () => {
+            cursor.classList.remove('cursor-hover');
+        });
+    });
 
-    if (btnBackBlender) {
-        btnBackBlender.addEventListener("click", () => {
-            console.log('Clic detectado en Regresar (desde Blender)');
-            showHome();
+    // Optional: Also watch for dynamically added elements in the future
+    const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+            if (mutation.addedNodes.length) {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === 1) { // ELEMENT_NODE
+                        if (node.matches && node.matches(interactiveSelectors)) {
+                            node.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+                            node.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+                        }
+                        const children = node.querySelectorAll(interactiveSelectors);
+                        children.forEach(child => {
+                            child.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+                            child.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+                        });
+                    }
+                });
+            }
+        });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    // ==========================================
+    // Audio Player Logic
+    // ==========================================
+    const audioToggle = document.getElementById('audio-toggle');
+    const bgAudio = document.getElementById('bg-audio');
+
+    if (audioToggle && bgAudio) {
+        // Set volume to a pleasant background level
+        bgAudio.volume = 0.35;
+
+        audioToggle.addEventListener('click', () => {
+            if (bgAudio.paused) {
+                bgAudio.play().then(() => {
+                    audioToggle.classList.add('playing');
+                }).catch(err => {
+                    console.error("Audio playback failed:", err);
+                });
+            } else {
+                bgAudio.pause();
+                audioToggle.classList.remove('playing');
+            }
         });
     }
 });
-
-// ==========================================
-// Inicialización de Three.js
-// ==========================================
-// Función vacía declarada tal como se solicitó para uso futuro
-function initThreeJS() {
-    console.log("Inicializando escena 3D con Three.js...");
-    // El setup de Three.js irá aquí más adelante
-}
