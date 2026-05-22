@@ -1,56 +1,56 @@
-# 🎮 Portafolio Web con Escena 3D Interactiva (Diorama Gamer)
+# 🎮 Web Portfolio with 3D Interactive Scene (Gamer Diorama)
 
-## 📌 Información Académica
-* **Institución:** Instituto Tecnológico de Mérida (TecNM Campus Mérida)
-* **Carrera:** Ingeniería en Sistemas Computacionales
-* **Semestre:** 5to Semestre
-* **Grupo:** 5SA
-* **Asignatura:** Graficación
-* **Docente:** Mtr. Rodrigo Fidel Gaxiola Sosa
-* **Estudiante:** José Antonio Rosado Osorio
-
----
-
-## 🌌 Descripción del Proyecto
-Este proyecto consiste en el diseño, modelado, optimización e integración web de un **Diorama 3D Interactivo** con estética *Cyberpunk / Neon Vibrante*. El escenario representa un *Setup Gamer* completo, optimizado bajo la técnica de modelado *Low-Poly* para asegurar una tasa de transferencia fluida y un rendimiento óptimo en entornos web navegables mediante el componente de renderizado `<model-viewer>`.
+## 📌 Academic Information
+* **Institution:** Instituto Tecnológico de Mérida (TecNM Campus Mérida)
+* **Major:** Computer Systems Engineering (Ingeniería en Sistemas Computacionales)
+* **Semester:** 5th Semester
+* **Group:** 5SA
+* **Course:** Computer Graphics (Graficación)
+* **Instructor:** Mtr. Rodrigo Fidel Gaxiola Sosa
+* **Student:** José Antonio Rosado Osorio
 
 ---
 
-## 🛠️ Especificaciones Técnicas y Modelado
-
-### 🔹 Elementos de Propiedad Intelectual (Modelados desde cero)
-Diseñados, extruidos y estructurados de manera nativa utilizando transformaciones geométricas avanzadas y modificadores (como *Mirror* y *Subdivision*) en **Blender**:
-* **Arquitectura de la habitación:** Paredes, piso, ventanas y estructura general del cuarto.
-* **Escritorio Gamer:** Soporte principal y base para los periféricos.
-* **Estación de Trabajo (PC):** Gabinete y torre gamer con diseño personalizado.
-* **Pantallas y Periféricos:** Monitor de alta tasa de refresco y teclado mecánico.
-* **Mobiliario Secundario:** Repisas, soportes decorativos y detalles del entorno para simular un "cuarto a mi estilo".
-
-### 🔹 Elementos Importados y Optimizados (Créditos de Assets)
-Recursos externos obtenidos de la comunidad 3D, integrados para enriquecer la composición del diorama, optimizados en poligonización y re-texturizados con materiales del entorno:
-* **Pelota de Baloncesto:** Asset original de **Ika3D** (Sketchfab).
-* **Cama Completa:** Asset original de **hectopod** (Sketchfab).
-* **Maceta Metálica/Orgánica:** Asset original de **Giora** (Sketchfab).
-* **Mouse Gamer:** Asset original de **rubykamen** (Sketchfab).
-* **Puff de Cuero:** Asset original de **Hey Arnold** (Sketchfab).
-
-### 💡 Iluminación y Materiales (Efecto Neón)
-* **Mapas de Emisión:** Configuración de materiales con nodos emisivos (*Emission*) en tonos Morado Neón (`#7F2BFF`) y Cian (`#00FFFF`) para simular la iluminación de tiras LED y pantallas de corte cyberpunk.
-* **Optimización en Transmisión:** El escenario completo fue exportado en formato estándar **GLB**. El peso total de la escena fue comprimido a **39 MB** mediante codificación **Draco** para asegurar tiempos de carga web instantáneos.
+## 🌌 Project Overview
+This project consists of the design, modeling, optimization, and web integration of an **Interactive 3D Diorama** with a high-saturation *Cyberpunk / Neon Vibrant* aesthetic. The scenario represents a complete *Gamer Setup*, optimized using *Low-Poly* modeling techniques to ensure smooth data transfer rates and optimal performance in web environments via Google's `<model-viewer>` component.
 
 ---
 
-## 🌐 Integración e Interactividad Web
-El diorama se despliega en una interfaz responsiva (`diorama.html`) utilizando la biblioteca web de código abierto **Model-Viewer** de Google.
+## 🛠️ Technical Specifications & Modeling
 
-### ⚙️ Características Interactivas Implementadas:
-1. **Control de Órbita (Camera Controls):** Permite al usuario rotar, hacer zoom y manipular la cámara en 360 grados de forma táctil o mediante el ratón.
-2. **Interruptor de Ambiente (JavaScript):** Script dinámico en JS que manipula el atributo `exposure` (exposición) del visor 3D para alternar entre una iluminación diurna de producción (`1.2`) y una atmósfera inmersiva nocturna de neón (`0.3`), simulando el apagado de luces de la habitación.
+### 🔹 Intellectual Property Assets (Modelated From Scratch)
+Designed, extruded, and structured natively using advanced geometric transformations and modifiers (such as *Mirror* and *Subdivision*) in **Blender**:
+* **Room Architecture:** Walls, floor, windows, and overall structural layout of the bedroom.
+* **Gamer Desk:** Main support structure and base layout for peripherals.
+* **Workstation (PC Case):** Custom-designed desktop tower with internal hardware suggestions.
+* **Screens & Peripherals:** High-refresh-rate monitor and mechanical keyboard.
+* **Secondary Furniture:** Shelves, decorative supports, and environment details tailored to a personal gaming setup style.
+
+### 🔹 Imported Assets & Optimization (Credits)
+External resources obtained from the 3D community, integrated to enrich the diorama's composition, optimized in polygon count, and re-textured with environment PBR materials:
+* **Basketball:** Original asset by **Ika3D** (Sketchfab).
+* **Complete Bed:** Original asset by **hectopod** (Sketchfab).
+* **Organic Planter:** Original asset by **Giora** (Sketchfab).
+* **Gaming Mouse:** Original asset by **rubykamen** (Sketchfab).
+* **Leather Puff:** Original asset by **Hey Arnold** (Sketchfab).
+
+### 💡 Lighting & Materials (Neon Glow Effect)
+* **Emission Maps:** Material nodes configured with emission properties in Neon Purple (`#7F2BFF`) and Bright Cyan (`#00FFFF`) to simulate ambient LED strips and screen glows.
+* **Transmission Optimization:** The complete scene was exported in the industry-standard **GLB** format. The final file size was compressed to **39 MB** using **Draco compression** to guarantee near-instant web loading times.
 
 ---
 
-## 🚀 Instalación y Despliegue Local
+## 🌐 Web Integration & Interactiveness
+The diorama is deployed within a responsive web interface (`diorama.html`) powered by Google's open-source **Model-Viewer** library.
 
-1. Clona este repositorio en tu máquina local:
+### ⚙️ Implemented Interactive Features:
+1. **Orbit Control (Camera Controls):** Allows users to rotate, zoom, and pan the camera 360 degrees via touch gestures or mouse inputs.
+2. **Environment Light Switch (JavaScript):** A dynamic JS script that manipulates the `exposure` attribute of the 3D viewport to toggle between production daylight (`1.2`) and an immersive neon night atmosphere (`0.3`), simulating turning off the bedroom lights.
+
+---
+
+## 🚀 Local Deployment & Installation
+
+1. Clone this repository to your local machine:
    ```bash
    git clone [https://github.com/JAro05x/Portafolio-web-con-escena-3D.git](https://github.com/JAro05x/Portafolio-web-con-escena-3D.git)
